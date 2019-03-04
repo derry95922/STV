@@ -1,0 +1,2 @@
+[![pipeline status](https://stv.csie.ntut.edu.tw/fourbags/GeoProject/badges/master/pipeline.svg)](https://stv.csie.ntut.edu.tw/fourbags/GeoProject/commits/master)
+[![coverage report](https://stv.csie.ntut.edu.tw/fourbags/GeoProject/badges/master/coverage.svg)](https://stv.csie.ntut.edu.tw/fourbags/GeoProject/commits/master)
