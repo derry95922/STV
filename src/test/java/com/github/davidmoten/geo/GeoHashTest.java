@@ -34,14 +34,16 @@ public class GeoHashTest {
         assertEquals("0",GeoHash.adjacentHash(hash,Direction.LEFT));
     }
 
-//    @Test
-//    public void top() {
-//    }
-//
-//    @Test
-//    public void bottom() {
-//    }
-//
+    @Test
+    public void top() {
+        assertEquals("3",GeoHash.adjacentHash(hash,Direction.TOP));
+    }
+
+    @Test
+    public void bottom() {
+        assertEquals("j",GeoHash.adjacentHash(hash,Direction.BOTTOM));
+    }
+
 //    @Test
 //    public void adjacentHash1() {
 //    }
