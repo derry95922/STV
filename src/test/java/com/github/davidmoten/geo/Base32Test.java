@@ -17,9 +17,27 @@ public class Base32Test {
     }
 
     @Test
-    public void encodeBase32() throws Exception {
-        String encode = Base32.encodeBase32(75324, 4);
-        assertEquals("29jw", encode);
+    public void encodeBase32() {
+        assertEquals("79",Base32.encodeBase32(233,2));
     }
 
+    @Test
+    public void encodeBase321() {
+        assertEquals("000000000082",Base32.encodeBase32(258));
+    }
+
+    @Test
+    public void decodeBase32() {
+        assertEquals(1091,Base32.decodeBase32("123"));
+    }
+
+    @Test
+    public void getCharIndex() {
+        assertEquals(1,Base32.getCharIndex('1'));
+    }
+
+    @Test
+    public void padLeftWithZerosToLength() {
+        assertEquals("000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000123",Base32.padLeftWithZerosToLength("123",123));
+    }
 }
