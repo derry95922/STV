@@ -45,4 +45,5 @@ public class CoverageLongsTest {
     public void getCount() {
         assertEquals(1,coverageLongs.getCount());
     }
+
 }
