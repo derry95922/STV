@@ -43,7 +43,7 @@ public class GeoHashTest {
     public void bottom() {
         assertEquals("j",GeoHash.bottom(hash));
     }
-
+//
 //    @Test
 //    public void adjacentHash1() {
 //    }
