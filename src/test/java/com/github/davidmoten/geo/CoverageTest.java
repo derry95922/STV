@@ -37,10 +37,24 @@ public class CoverageTest {
     @Test
     public void getHashLength() {
         assertEquals(3,coverage.getHashLength());
+
+        Set<String>hashLengthZero= new HashSet<String>();
+        Coverage test = new Coverage(hashLengthZero,0);
+        assertEquals(0,test.getHashLength());
     }
 
     @Test
     public void toStringText() {
         assertEquals("Coverage [hashes=[abc], ratio=0.0]",coverage.toString());
     }
+
+//    @Test
+//    public void Coverage(){
+//                long[] hashLengthZero = {};
+//        long[] hashes = {1, 2};
+//        int count = 1;
+//        double ratio = 1.1;
+//        CoverageLongs coverageLongs = new CoverageLongs(hashes,count,ratio);
+//        assertEquals("",coverage.);
+//    }
 }

@@ -19,6 +19,7 @@ public class Base32Test {
     @Test
     public void encodeBase32() {
         assertEquals("79",Base32.encodeBase32(233,2));
+        assertEquals("-001",Base32.encodeBase32(-1,3));
     }
 
     @Test
@@ -29,11 +30,18 @@ public class Base32Test {
     @Test
     public void decodeBase32() {
         assertEquals(1091,Base32.decodeBase32("123"));
+        assertEquals(-1,Base32.decodeBase32("-1"));
     }
 
     @Test
     public void getCharIndex() {
         assertEquals(1,Base32.getCharIndex('1'));
+        try{
+            assertEquals("not a base32 character: " + '_',Base32.getCharIndex('_'));
+        }catch (IllegalArgumentException e){
+            System.out.print(e);
+        }
+
     }
 
     @Test

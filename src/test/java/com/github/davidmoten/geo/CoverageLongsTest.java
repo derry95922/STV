@@ -1,5 +1,6 @@
 package com.github.davidmoten.geo;
 
+import com.google.common.collect.Sets;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,11 +40,29 @@ public class CoverageLongsTest {
     @Test
     public void getHashLength() {
         assertEquals(1,coverageLongs.getHashLength());
+
+        long[] hashes = {1, 2};
+        int count = 0;
+        double ratio = 1.1;
+        CoverageLongs coverageCountZero = new CoverageLongs(hashes,count,ratio);
+        assertEquals(0,coverageCountZero.getHashLength());
+
     }
 
     @Test
     public void getCount() {
         assertEquals(1,coverageLongs.getCount());
     }
+
+//    @Test
+//    public void toString1(){
+//        long[] hashes = {1, 2};
+//        int count = 0;
+//        double ratio = 1.1;
+//        CoverageLongs coverageCountZero = new CoverageLongs(hashes,count,ratio);
+//
+//        long[] testHash = coverageCountZero.getHashes();
+//        assertEquals("Coverage [hashes=" + testHash + ", ratio=" + ratio + "]",coverageCountZero.toString());
+//    }
 
 }
