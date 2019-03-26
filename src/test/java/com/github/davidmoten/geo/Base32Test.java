@@ -18,13 +18,17 @@ public class Base32Test {
 
     @Test
     public void encodeBase32() {
-        assertEquals("79",Base32.encodeBase32(233,2));
-        assertEquals("-001",Base32.encodeBase32(-1,3));
+        assertEquals("1",Base32.encodeBase32(1,1));
+        assertEquals("1",Base32.encodeBase32(1,-1));
+        assertEquals("-1",Base32.encodeBase32(-1,1));
+        assertEquals("-1",Base32.encodeBase32(-1,-1));
     }
 
     @Test
     public void encodeBase321() {
         assertEquals("000000000082",Base32.encodeBase32(258));
+        assertEquals("000000000001",Base32.encodeBase32(1));
+        assertEquals("-000000000001",Base32.encodeBase32(-1));
     }
 
     @Test
@@ -47,5 +51,6 @@ public class Base32Test {
     @Test
     public void padLeftWithZerosToLength() {
         assertEquals("0123",Base32.padLeftWithZerosToLength("123",4));
+        assertEquals("0asd",Base32.padLeftWithZerosToLength("asd",4));
     }
 }

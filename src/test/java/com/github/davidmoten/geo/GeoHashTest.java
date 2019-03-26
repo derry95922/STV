@@ -1,11 +1,13 @@
 package com.github.davidmoten.geo;
 
+import com.google.common.collect.Sets;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static com.github.davidmoten.geo.GeoHash.decodeHash;
 import static org.junit.Assert.*;
@@ -25,6 +27,16 @@ public class GeoHashTest {
     @Test
     public void adjacentHash() {
         assertEquals("3",GeoHash.adjacentHash(hash,Direction.TOP));
+        String test = "";
+        try{
+            assertEquals("3",GeoHash.adjacentHash(test,Direction.TOP));
+        }catch (IllegalArgumentException e){
+            System.out.println(e);
+        }
+        test = "11";
+        assertEquals("14",GeoHash.adjacentHash(test,Direction.TOP));
+        test = test + "1";
+        assertEquals("113",GeoHash.adjacentHash(test,Direction.TOP));
     }
 
     @Test
@@ -49,6 +61,7 @@ public class GeoHashTest {
 //*new here*//
     @Test
     public void adjacentHash1() {
+        String test = "test5278";
         assertEquals("1",GeoHash.adjacentHash(hash,Direction.BOTTOM,0));
         assertEquals("3",GeoHash.adjacentHash(hash,Direction.BOTTOM,-1));
         assertEquals("j",GeoHash.adjacentHash(hash,Direction.TOP,-1));
@@ -200,18 +213,33 @@ public class GeoHashTest {
         assertFalse(GeoHash.hashContains("0", centre.getLat(),centre.getLon() + 50));
     }
 
-//    @Test
-//    public void coverBoundingBox() {
-//    }
-//
-//    @Test
-//    public void coverBoundingBoxMaxHashes() {
-//    }
-//
-//    @Test
-//    public void coverBoundingBox1() {
-//    }
-//
+    @Test
+    public void coverBoundingBox() {
+        Set<String>test = GeoHash.coverBoundingBox(0,0,0,0).getHashes();
+        assertEquals(Sets.newHashSet("s00000000000"),test);
+//        assertEquals(1,GeoHash.coverBoundingBox(0,0,0,0,1).getHashLength());
+    }
+
+    @Test
+    public void coverBoundingBoxMaxHashes() {
+        Coverage coverageMax = GeoHash.coverBoundingBoxMaxHashes(0,0,0,0,12);
+        assertEquals(1,coverageMax.getHashes().size());
+
+        Coverage coverageMin = GeoHash.coverBoundingBoxMaxHashes(0,0,0,0,0);
+        assertNull(coverageMin);
+
+        Coverage coverageOne = GeoHash.coverBoundingBoxMaxHashes(0,0,0,0,1);
+        assertEquals(1,coverageOne.getHashes().size());
+
+        Coverage coverageMoreMax = GeoHash.coverBoundingBoxMaxHashes(0,0,0,0,Integer.MAX_VALUE);
+        assertEquals(GeoHash.MAX_HASH_LENGTH,coverageMoreMax.getHashLength());
+    }
+
+    @Test
+    public void coverBoundingBox1() {
+        assertEquals(1,GeoHash.coverBoundingBox(0,0,0,0,1).getHashLength());
+    }
+
 //    @Test
 //    public void coverBoundingBoxLongs() {
 //    }
@@ -227,10 +255,14 @@ public class GeoHashTest {
         assertEquals(45.,GeoHash.widthDegrees(1),0.0000001);
         assertEquals(4.190951585769653E-8,GeoHash.widthDegrees(13),0.0000001);
     }
-//
-//    @Test
-//    public void gridAsString() {
-//    }
+
+    @Test
+    public void gridAsString() {
+//        System.out.println(GeoHash.gridAsString(hash, -5, -5, 5, 5));
+//        System.out.println(gridAsString("dr", 1,
+//                Collections.<String> emptySet()));
+//        assertEquals("",GeoHash.gridAsString(hash,0,0,0,0));
+    }
 //
 //    @Test
 //    public void gridAsString1() {
