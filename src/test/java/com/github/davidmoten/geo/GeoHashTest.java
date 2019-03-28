@@ -199,47 +199,15 @@ public class GeoHashTest {
         assertEquals(0, GeoHash.encodeHashToLong(0, 0, 0));
     }
 
-//    @Test
-//    public void decodeHash() {
-//        //*//
-//        String geoHash = "0";
-//        String BASE32 = "0123456789bcdefghjkmnpqrstuvwxyz";
-//        int[] BITS = new int[] { 16, 8, 4, 2, 1 };
-//
-//        boolean isEven = true;
-//        double[] lat = new double[2];
-//        double[] lon = new double[2];
-//        lat[0] = -90.0;
-//        lat[1] = 90.0;
-//        lon[0] = -180.0;
-//        lon[1] = 180.0;
-//
-//        for (int i = 0; i <geoHash.length(); i++) {
-//            char c = geoHash.charAt(i);
-//            int cd = BASE32.indexOf(c);
-//            for (int j = 0; j < 5; j++) {
-//                int mask = BITS[j];
-//                if (isEven) {
-//                    if ((cd & mask) != 0)
-//                        lon[0] = (lon[0] + lon[1]) / 2;
-//                    else
-//                        lon[1] = (lon[0] + lon[1]) / 2;
-//                } else {
-//                    if ((cd & mask) != 0)
-//                        lat[0] = (lat[0] + lat[1]) / 2;
-//                    else
-//                        lat[1] = (lat[0] + lat[1]) / 2;
-//                }
-//                isEven = !isEven;
-//            }
-//        }
-//        double resultLat = (lat[0] + lat[1]) / 2;
-//        double resultLon = (lon[0] + lon[1]) / 2;
-//
-//        LatLong test = new LatLong(resultLat,resultLon);
-//
-//        assertEquals(test,GeoHash.decodeHash("0"));
-//    }
+    @Test
+    public void decodeHash() {
+        //*//
+        String hashTest = "0";
+        LatLong test = GeoHash.decodeHash(hashTest);
+
+        assertEquals(-67.5,test.getLat(),0.001);
+        assertEquals(-157.5,test.getLon(),0.001);
+    }
 
     @Test
     public void hashLengthToCoverBoundingBox() {
@@ -257,7 +225,7 @@ public class GeoHashTest {
 
     @Test
     public void hashContains() {
-        LatLong centre = decodeHash("0");
+        LatLong centre = GeoHash.decodeHash("0");
         assertTrue(GeoHash.hashContains("0", centre.getLat(), centre.getLon()));
         assertTrue(GeoHash.hashContains("0", centre.getLat() + 20, centre.getLon()));
         assertFalse(GeoHash.hashContains("0", centre.getLat(),centre.getLon() + 50));
