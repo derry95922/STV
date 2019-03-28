@@ -26,6 +26,7 @@ public class GeoHashTest {
 
     @Test
     public void adjacentHash() {
+        //*//
         assertEquals("3",GeoHash.adjacentHash(hash,Direction.TOP));
         String test = "";
         try{
@@ -37,30 +38,75 @@ public class GeoHashTest {
         assertEquals("14",GeoHash.adjacentHash(test,Direction.TOP));
         test = test + "1";
         assertEquals("113",GeoHash.adjacentHash(test,Direction.TOP));
+
+
+//        assertEquals("113",GeoHash.adjacentHash("",Direction.TOP));
     }
 
     @Test
     public void right() {
-        assertEquals("4",GeoHash.right(hash));
+        //*//
+//        assertEquals("4",GeoHash.right(hash));
+        assertEquals("m",GeoHash.right("k"));
+        assertEquals("ks",GeoHash.right("kk"));
+        assertEquals("b",GeoHash.right("a"));
+        assertEquals("bp",GeoHash.right("aa"));
+
     }
 
     @Test
     public void left() {
-        assertEquals("0",GeoHash.left(hash));
+        //*//
+//        assertEquals("0",GeoHash.left(hash));
+        assertEquals("7",GeoHash.left("k"));
+        assertEquals("kh",GeoHash.left("kk"));
+        try {
+            assertEquals("b", GeoHash.left("a"));
+        }catch (StringIndexOutOfBoundsException e){
+            System.out.println(e);
+        }
+        try {
+            assertEquals("b", GeoHash.left("aa"));
+        }catch (StringIndexOutOfBoundsException e){
+            System.out.println(e);
+        }
     }
 
     @Test
     public void top() {
-        assertEquals("3",GeoHash.top(hash));
+        //*//
+//        assertEquals("3",GeoHash.top(hash));
+        assertEquals("s",GeoHash.top("k"));
+        assertEquals("km",GeoHash.top("kk"));
+        assertEquals("g", GeoHash.top("a"));
+        try {
+            assertEquals("b", GeoHash.top("aa"));
+        }catch (StringIndexOutOfBoundsException e){
+            System.out.println(e);
+        }
     }
 
     @Test
     public void bottom() {
-        assertEquals("j",GeoHash.bottom(hash));
+        //*//
+//        assertEquals("j",GeoHash.bottom(hash));
+        assertEquals("h",GeoHash.bottom("k"));
+        assertEquals("k7",GeoHash.bottom("kk"));
+        try {
+            assertEquals("b", GeoHash.bottom("a"));
+        }catch (StringIndexOutOfBoundsException e){
+            System.out.println(e);
+        }
+        try {
+            assertEquals("b", GeoHash.bottom("aa"));
+        }catch (StringIndexOutOfBoundsException e){
+            System.out.println(e);
+        }
     }
 //*new here*//
     @Test
     public void adjacentHash1() {
+        //*//
         String test = "test5278";
         assertEquals("1",GeoHash.adjacentHash(hash,Direction.BOTTOM,0));
         assertEquals("3",GeoHash.adjacentHash(hash,Direction.BOTTOM,-1));
@@ -71,6 +117,7 @@ public class GeoHashTest {
 
     @Test
     public void neighbours() {
+        //*//
         List<String> list = new ArrayList<String>();
         String left = GeoHash.adjacentHash(hash, Direction.LEFT);
         String right = GeoHash.adjacentHash(hash, Direction.RIGHT);
@@ -87,11 +134,13 @@ public class GeoHashTest {
 
     @Test
     public void encodeHash() {
+        //*//
         assertEquals("s00000000000",GeoHash.encodeHash(0,0));
     }
 
     @Test
     public void encodeHash1() {
+        //*//
         assertEquals("s0",GeoHash.encodeHash(0,0,2));
 
         try{
@@ -128,6 +177,7 @@ public class GeoHashTest {
 
     @Test
     public void fromLongToString() {
+        //*//
         long hash =1;
         assertEquals("0",GeoHash.fromLongToString(hash));
         try {
@@ -151,7 +201,7 @@ public class GeoHashTest {
 
 //    @Test
 //    public void decodeHash() {
-//
+//        //*//
 //        String geoHash = "0";
 //        String BASE32 = "0123456789bcdefghjkmnpqrstuvwxyz";
 //        int[] BITS = new int[] { 16, 8, 4, 2, 1 };
@@ -246,12 +296,14 @@ public class GeoHashTest {
 //
     @Test
     public void heightDegrees() {
+        //*//
         assertEquals(45.0,GeoHash.heightDegrees(1),0.0000001);
         assertEquals(4.190951585769653E-8,GeoHash.heightDegrees(13),0.0000001);
     }
 
     @Test
     public void widthDegrees() {
+        //*//
         assertEquals(45.,GeoHash.widthDegrees(1),0.0000001);
         assertEquals(4.190951585769653E-8,GeoHash.widthDegrees(13),0.0000001);
     }
