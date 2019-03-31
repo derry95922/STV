@@ -26,15 +26,12 @@ public class Base32Test {
 
     @Test
     public void encodeBase321() {
-//        assertEquals("000000000082",Base32.encodeBase32(258));
         assertEquals("000000000001",Base32.encodeBase32(1));
         assertEquals("-000000000001",Base32.encodeBase32(-1));
     }
 
     @Test
     public void decodeBase32() {
-//        assertEquals(1091,Base32.decodeBase32("123"));
-//        assertEquals(-1,Base32.decodeBase32("-1"));
         assertEquals(1091,Base32.decodeBase32("123"));
         assertEquals(-1091,Base32.decodeBase32("-123"));
         try{
