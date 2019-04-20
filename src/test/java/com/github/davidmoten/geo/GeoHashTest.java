@@ -5,9 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static com.github.davidmoten.geo.GeoHash.decodeHash;
 import static org.junit.Assert.*;
@@ -34,6 +32,12 @@ public class GeoHashTest {
 //        }
 
         //e//
+        try {
+            assertEquals("110", GeoHash.adjacentHash("", Direction.LEFT));
+        }catch (IllegalArgumentException e){
+            System.out.println(e);
+        }
+
         assertEquals("110",GeoHash.adjacentHash("111",Direction.LEFT));
         assertEquals("0c",GeoHash.adjacentHash("11",Direction.LEFT));
         try{
@@ -384,6 +388,7 @@ public class GeoHashTest {
         Coverage coverageMax = GeoHash.coverBoundingBoxMaxHashes(0,0,0,0,12);
         assertEquals(1,coverageMax.getHashes().size());
 
+
         Coverage coverageMin = GeoHash.coverBoundingBoxMaxHashes(0,0,0,0,0);
         try{
             assertEquals(1,coverageMin.getHashes().size());
@@ -475,15 +480,24 @@ public class GeoHashTest {
         }
     }
 
-//    @Test
-//    public void gridAsString() {
-//    }
-//
-//    @Test
-//    public void gridAsString1() {
-//    }
-//
-//    @Test
-//    public void gridAsString2() {
-//    }
+    @Test
+    public void gridAsString() {
+        Set<String>test = new TreeSet<String>();
+        test.add("f");
+        assertEquals("c F g \n" + "9 d e \n" + "3 6 7 \n",GeoHash.gridAsString("d", 1,test));
+    }
+
+    @Test
+    public void gridAsString1() {
+        assertEquals("c f g \n" + "9 d e \n" + "3 6 7 \n",GeoHash.gridAsString("d", -1, -1, 1, 1));
+    }
+
+    @Test
+    public void gridAsString2() {
+        Set<String>test = new TreeSet<String>();
+        test.add("f");
+        assertEquals("c F g \n" +
+                "9 d e \n" +
+                "3 6 7 \n",GeoHash.gridAsString("d",-1,-1,1,1,test));
+    }
 }
