@@ -23,6 +23,8 @@ public class Base32Test {
         assertEquals("-1",Base32.encodeBase32(-1,1));
         assertEquals("-1",Base32.encodeBase32(-1,-1));
         System.out.println("testis here");
+
+        assertEquals("-10",Base32.encodeBase32(-32,-1));
     }
 
     @Test
