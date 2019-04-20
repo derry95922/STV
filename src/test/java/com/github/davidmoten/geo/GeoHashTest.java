@@ -32,6 +32,8 @@ public class GeoHashTest {
 //        }
 
         //e//
+        assertEquals("114",GeoHash.adjacentHash("111",Direction.LEFT.opposite()));
+
         try {
             assertEquals("110", GeoHash.adjacentHash("", Direction.LEFT));
         }catch (IllegalArgumentException e){
