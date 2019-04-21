@@ -222,6 +222,10 @@ public class GeoHashTest {
     @Test
     public void encodeHash2() {
         //e//
+        LatLong testAdd = new LatLong(0,0);
+        testAdd.add(45,45);
+        assertEquals("s00000000000",GeoHash.encodeHash(testAdd));
+
         LatLong tt = new LatLong(45,45);
         assertEquals("v00000000000",GeoHash.encodeHash(tt));
 
