@@ -250,7 +250,6 @@ public class GeoHashTest {
 
     @Test
     public void encodeHash3() {
-        //e//
         LatLong ttt = new LatLong(45,45);
         assertEquals("v0",GeoHash.encodeHash(ttt,2));
 
