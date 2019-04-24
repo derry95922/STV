@@ -308,13 +308,13 @@ public class GeoHashTest {
         long hash =1;
         assertEquals("0",GeoHash.fromLongToString(hash));
         try {
-            hash = 0;
+            hash = 13;
             assertEquals("0",GeoHash.fromLongToString(hash));
         }catch (IllegalArgumentException e){
             System.out.println(e);
         }
         try {
-            hash = 13;
+            hash = 0;
             assertEquals("0",GeoHash.fromLongToString(hash));
         }catch (IllegalArgumentException e){
             System.out.println(e);
