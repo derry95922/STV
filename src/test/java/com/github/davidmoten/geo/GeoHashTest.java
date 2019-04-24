@@ -304,7 +304,6 @@ public class GeoHashTest {
 
     @Test
     public void fromLongToString() {
-        //e//
         long hash =1;
         assertEquals("0",GeoHash.fromLongToString(hash));
         try {
