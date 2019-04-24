@@ -57,8 +57,6 @@ public class Base32Test {
     @Test
     public void padLeftWithZerosToLength() {
         assertEquals("0abc",Base32.padLeftWithZerosToLength("abc",4));
-//        assertEquals("0ABC",Base32.padLeftWithZerosToLength("ABC",4));
         assertEquals("abc",Base32.padLeftWithZerosToLength("abc",-4));
-//        assertEquals("ABC",Base32.padLeftWithZerosToLength("ABC",-4));
     }
 }
