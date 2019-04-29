@@ -278,6 +278,7 @@ public class GeoHashTest {
             System.out.println(e);
         }
 
+
         try{
             LatLong ftf = new LatLong(300,45);
             assertEquals("v00000000000",GeoHash.encodeHash(ftf,-2));
