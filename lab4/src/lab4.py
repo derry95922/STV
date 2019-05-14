@@ -244,6 +244,8 @@ class test_suite(unittest.TestCase):
         noPosts = driver.find_element(By.XPATH, "//*[text()='No posts found...']").text
         assert "No posts found..." == noPosts
 
+        logout(driver)
+
     def create_comment_on_admin_ui_page(self):
         print('---Create post on the Admin UI page---')
         driver = login()
@@ -433,21 +435,6 @@ class test_suite(unittest.TestCase):
 def suite():
     suite = unittest.TestSuite()
 
-    '''
-    suite.addTests([test_suite('create_post_on_the_admin_ui_page'),
-                    test_suite('edit_post_on_the_admin_ui_page'),
-                    test_suite('search_posts_by_keyword_on_the_admin_ui_page'),
-                    test_suite('create_comment_on_admin_ui_page'),
-                    test_suite('edit_comment_on_admin_ui_page'),
-                    test_suite('delete_comment_on_admin_ui_page'),
-                    test_suite('delete_post_on_the_admin_ui_page'),
-                    test_suite('create_category_on_admin_ui_page'),
-                    test_suite('show_posts_of_the_specific_category_by_pressing_category_name_on_the_blog_page'),
-                    test_suite('create_enquiry_on_the_contact_page'),
-                    test_suite('delete_enquiry_on_admin_ui_page'),
-                    test_suite('create_a_new_user_on_admin_ui_page')])
-    '''
-
     suite.addTests([test_suite('create_post_on_the_admin_ui_page'),
                     test_suite('edit_post_on_the_admin_ui_page'),
                     test_suite('search_posts_by_keyword_on_the_admin_ui_page'),
@@ -459,7 +446,8 @@ def suite():
                     test_suite('show_posts_of_the_specific_category_by_pressing_category_name_on_the_blog_page'),
                     test_suite('create_enquiry_on_the_contact_page'),
                     test_suite('delete_enquiry_on_admin_ui_page'),
-                    test_suite('create_a_new_user_on_admin_ui_page')])
+                    # test_suite('create_a_new_user_on_admin_ui_page')
+                    ])
     return suite
 
 if __name__ == '__main__':
