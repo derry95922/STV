@@ -4,17 +4,17 @@ from post_features import delete_post
 
 class test_suite(unittest.TestCase):
     def setUp(self):
-        print("")
-        print('---setUp---')
+        # print("")
+        # print('---setUp---')
         self.driver = login()
     
     def tearDown(self):
-        print("")
-        print('---teardown---')
+        # print("")
+        # print('---teardown---')
         logout(self.driver)
     
     def create_category_on_admin_ui_page(self):
-        print('---create_category_on_admin_ui_page---')
+        # print('---create_category_on_admin_ui_page---')
 
         wait_plus_icon_is_visible(self.driver, 'Posts', 'categories').click()
         wait_element_is_visible(self.driver, "//*[@data-screen-id='modal-dialog']")
@@ -27,7 +27,7 @@ class test_suite(unittest.TestCase):
         delete_category(self.driver)
 
     def show_posts_of_the_specific_category_by_pressing_category_name_on_the_blog_page(self):
-        print('---show_posts_of_the_specific_category_by_pressing_category_name_on_the_blog_page---')
+        # print('---show_posts_of_the_specific_category_by_pressing_category_name_on_the_blog_page---')
         create_category(self.driver)
         logout(self.driver)
         self.driver = login()

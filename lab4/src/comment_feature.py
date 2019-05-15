@@ -4,19 +4,19 @@ from post_features import create_post, delete_post
 
 class test_suite(unittest.TestCase):
     def setUp(self):
-        print("")
-        print('---setUp---')
+        # print("")
+        # print('---setUp---')
         self.driver = login()
         create_post(self.driver)
     
     def tearDown(self):
-        print("")
-        print('---teardown---')
+        # print("")
+        # print('---teardown---')
         delete_post(self.driver)
         logout(self.driver)
 
     def create_comment_on_admin_ui_page(self):
-        print('---Create post on the Admin UI page---')
+        # print('---Create post on the Admin UI page---')
 
         wait_plus_icon_is_visible(self.driver, 'Posts', 'comments').click()
         wait_element_is_visible(self.driver, "//*[@data-screen-id='modal-dialog']")
@@ -37,7 +37,7 @@ class test_suite(unittest.TestCase):
         delete_comment(self.driver)
 
     def edit_comment_on_admin_ui_page(self):
-        print('---edit_comment_on_admin_ui_page---')
+        # print('---edit_comment_on_admin_ui_page---')
         create_comment(self.driver)
 
         wait_element_is_visible(self.driver, "//*[@class='octicon octicon-home']").click()
@@ -56,7 +56,7 @@ class test_suite(unittest.TestCase):
         delete_comment(self.driver)
 
     def delete_comment_on_admin_ui_page(self):
-        print('---delete_comment_on_admin_ui_page---')
+        # print('---delete_comment_on_admin_ui_page---')
         create_comment(self.driver)
 
         wait_element_is_visible(self.driver, "//*[@class='octicon octicon-home']").click()

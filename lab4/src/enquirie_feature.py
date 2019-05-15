@@ -5,6 +5,7 @@ class test_suite(unittest.TestCase):
     def create_enquiry_on_the_contact_page(self):
         driver = webdriver.Chrome()
         driver.get("http://127.0.0.1:3000/")
+        driver.maximize_window()
         wait_element_is_visible(driver, "//li//*[text()='Contact']").click()
 
         input_text(driver, "//*[@name='name.full']", "testName")
@@ -47,6 +48,7 @@ class test_suite(unittest.TestCase):
 def create_enquiry():
     driver = webdriver.Chrome()
     driver.get("http://127.0.0.1:3000/")
+    driver.maximize_window()
     wait_element_is_visible(driver, "//li//*[text()='Contact']").click()
 
     input_text(driver, "//*[@name='name.full']", "testName")

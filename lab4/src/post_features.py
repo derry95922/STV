@@ -3,17 +3,17 @@ from keywords import *
 
 class test_suite(unittest.TestCase):
     def setUp(self):
-        print("")
-        print('---setUp---')
+        # print("")
+        # print('---setUp---')
         self.driver = login()
     
     def tearDown(self):
-        print("")
-        print('---teardown---')
+        # print("")
+        # print('---teardown---')
         logout(self.driver)
     
     def create_post_on_the_admin_ui_page(self):
-        print('---Create post on the Admin UI page---')
+        # print('---Create post on the Admin UI page---')
   
         wait_plus_icon_is_visible(self.driver, 'Posts', 'posts').click()
         wait_element_is_visible(self.driver, "//*[@data-screen-id='modal-dialog']")
@@ -28,7 +28,7 @@ class test_suite(unittest.TestCase):
         delete_post(self.driver)
 
     def edit_post_on_the_admin_ui_page(self):
-        print('---edit_post_on_the_admin_ui_page---')
+        # print('---edit_post_on_the_admin_ui_page---')
         create_post(self.driver)
 
         wait_web_herf_is_visible(self.driver, "posts").click()
@@ -47,7 +47,7 @@ class test_suite(unittest.TestCase):
         delete_post(self.driver)
 
     def search_posts_by_keyword_on_the_admin_ui_page(self):
-        print('---search_posts_by_keyword_on_the_admin_ui_page---')
+        # print('---search_posts_by_keyword_on_the_admin_ui_page---')
         create_post(self.driver)
 
         wait_web_herf_is_visible(self.driver, "posts").click()
@@ -66,7 +66,7 @@ class test_suite(unittest.TestCase):
         delete_post(self.driver)
 
     def delete_post_on_the_admin_ui_page(self):
-        print('---delete_post_on_the_admin_ui_page---')
+        # print('---delete_post_on_the_admin_ui_page---')
         create_post(self.driver)
 
         wait_web_herf_is_visible(self.driver, "posts").click()
